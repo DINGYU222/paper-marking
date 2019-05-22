@@ -75,20 +75,19 @@
 
                 <div class="am-u-sm-12 am-u-md-8 am-u-md-pull-4">
                     <form class="am-form am-form-horizontal"
-                          action="http://localhost:10088/question/update/${dto.questionBank.qid}" method="post">
-                        <div class="am-form-group">
-                            <label class="am-u-sm-3 am-form-label">课程名字</label>
-                            <div class="am-u-sm-9">
-                                <input type="text" value="${dto.course.name}" disabled="disabled">
-                            </div>
-                        </div>
+                          action="http://localhost:10088/question/update/${question.qId}" method="post">
 
 
                         <div class="am-form-group">
-                            <label for="user-name" class="am-u-sm-3 am-form-label">知识点名字</label>
+                            <label class="am-u-sm-3 am-form-label">所属知识点</label>
                             <div class="am-u-sm-9">
-                                <input disabled="disabled" type="text" id="user-name"
-                                       value="${dto.point.kid}.${dto.point.kname}">
+                                <select data-am-selected="{btnSize: 'sm'}" name="kId">
+                                    <option value="${question.kId}">${question.knowledgePoint.kNumber}&nbsp;${question.knowledgePoint.kName}</option>
+                                    <c:forEach var="point" items="${points}">
+                                        <option value="${point.kId}"> ${point.kNumber}&nbsp;${point.kName} </option>
+                                    </c:forEach>
+                                </select>
+
                             </div>
                         </div>
 
@@ -96,14 +95,14 @@
                         <div class="am-form-group">
                             <label class="am-u-sm-3 am-form-label">试题内容</label>
                             <div class="am-u-sm-9">
-                                <input type="text" name="content" value="${dto.questionBank.content}">
+                                <input type="text" name="qContent" value="${question.qContent}">
                             </div>
                         </div>
 
                         <div class="am-form-group">
                             <label class="am-u-sm-3 am-form-label">正确答案</label>
                             <div class="am-u-sm-9">
-                                <input type="text" name="rightAnswers" value="${dto.questionBank.rightAnswers}">
+                                <input type="text" name="qRightAnswer" value="${question.qRightAnswer}">
                             </div>
                         </div>
 
@@ -111,8 +110,8 @@
                         <div class="am-form-group">
                             <label class="am-u-sm-3 am-form-label">题型</label>
                             <div class="am-u-sm-9">
-                                <select data-am-selected="{btnSize: 'sm'}" name="type">
-                                    <option value="${dto.questionBank.type}">${dto.questionBank.type}</option>
+                                <select data-am-selected="{btnSize: 'sm'}" name="qType">
+                                    <option value="${question.qType}">${question.qType}</option>
                                     <option value="选择题">选择题</option>
                                     <option value="填空题">填空题</option>
                                     <option value="判断题">判断题</option>
@@ -125,7 +124,7 @@
                         <div class="am-form-group">
                             <label class="am-u-sm-3 am-form-label">试题难度</label>
                             <div class="am-u-sm-9">
-                                <input type="text" value="${dto.questionBank.questionRating}" name="questionRating">
+                                <input type="text" value="${question.qDifflevel}" name="qDifflevel">
                             </div>
                         </div>
 

@@ -68,24 +68,14 @@
 
         <div class="am-u-sm-12 am-u-md-8 am-u-md-pull-4">
           <form class="am-form am-form-horizontal" action="http://localhost:10088/question/save" method="post">
-            <div class="am-form-group">
-              <label  class="am-u-sm-3 am-form-label">选择课程</label>
-              <div class="am-u-sm-9">
-                <select data-am-selected="{btnSize: 'sm'}" name="cid">
-                  <c:forEach var="course" items="${courses}">
-                  <option value="${course.cid}">${course.name}</option>
-                  </c:forEach>
-                </select>
 
-              </div>
-            </div>
 
             <div class="am-form-group">
               <label for="user-phone" class="am-u-sm-3 am-form-label">所属知识点</label>
               <div class="am-u-sm-9">
-                <select data-am-selected="{btnSize: 'sm'}" name="kid">
+                <select data-am-selected="{btnSize: 'sm'}" name="kId">
                   <c:forEach var="point" items="${points}">
-                    <option value="${point.kid}">${point.kid} . ${point.kname}</option>
+                    <option value="${point.kId}">${point.kNumber}&nbsp;${point.kName}</option>
                   </c:forEach>
                 </select>
               </div>
@@ -94,13 +84,13 @@
             <div class="am-form-group">
               <label for="user-QQ" class="am-u-sm-3 am-form-label" >试题内容</label>
               <div class="am-u-sm-9">
-                <input type="text"  id="user-QQ" placeholder="试题内容" name="content">
+                <input type="text"  id="user-QQ" placeholder="试题内容" name="qContent">
               </div>
             </div>
             <div class="am-form-group">
               <label for="user-QQ" class="am-u-sm-3 am-form-label" >正确答案</label>
               <div class="am-u-sm-9">
-                <input type="text"  id="x" placeholder="正确答案" name="rightAnswers">
+                <input type="text"  id="x" placeholder="正确答案" name="qRightAnswer">
               </div>
             </div>
 
@@ -108,7 +98,7 @@
             <div class="am-form-group">
               <label for="user-QQ" class="am-u-sm-3 am-form-label">题型</label>
               <div class="am-u-sm-9">
-                <select data-am-selected="{btnSize: 'sm'}" name="type">
+                <select data-am-selected="{btnSize: 'sm'}" name="qType">
                     <option value="选择题">选择题</option>
                     <option value="填空题">填空题</option>
                     <option value="判断题">判断题</option>
@@ -120,7 +110,7 @@
             <div class="am-form-group">
               <label for="user-QQ" class="am-u-sm-3 am-form-label">试题难度</label>
               <div class="am-u-sm-9">
-                <input type="text" placeholder="难度系数 填写0-1之间的数 如0.5" name="questionRating">
+                <input type="text" placeholder="难度系数 填写0-1之间的数 如0.5 保留小数位2位" name="qDifflevel">
               </div>
             </div>
 

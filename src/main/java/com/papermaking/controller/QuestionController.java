@@ -1,13 +1,16 @@
 package com.papermaking.controller;
 
+import com.papermaking.Service.KnowledgePointService;
 import com.papermaking.Service.QuestionService;
 import com.papermaking.pojo.Question;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -16,7 +19,8 @@ public class QuestionController {
     @Autowired
     private QuestionService questionService;
 
-
+    @Autowired
+    private KnowledgePointService knowledgePointService;
 
     @RequestMapping(method = RequestMethod.GET)
     public String findAll(Model model) {
@@ -26,41 +30,40 @@ public class QuestionController {
         return "question/question_all";
     }
 
-//    @RequestMapping(value = "/save", method = RequestMethod.GET)
-//    public String saveView(Model model) {
-//        model.addAttribute("courses", courseService.findAll());
-//        model.addAttribute("points", pointService.findAll());
-//        return "question/question_save";
-//    }
-//
-//    @RequestMapping(value = "/save", method = RequestMethod.POST)
-//    public String save(Model model, QuestionBank questionBank) {
-//        service.save(questionBank);
-//        return "redirect:/question";
-//    }
-//
-//    @RequestMapping(value = "/delete/{qid}", method = RequestMethod.GET)
-//    public String delete(@PathVariable("qid") String qid) {
-//        service.delete(qid);
-//        return "redirect:/question";
-//    }
-//
-//    @RequestMapping(value = "/update/{qid}")
-//    public String updateView(@PathVariable("qid") String qid, Model model) {
-//        QuestionBank question = service.findById(qid);
-//        model.addAttribute("dto", new QuestionDTO(
-//                question,
-//                courseService.findById(question.getCid()),
-//                pointService.findByIdAndCid(question.getKid(), question.getCid()))
-//        );
-//        return "question/update_question";
-//    }
-//
-//    @RequestMapping(value = "/update/{qid}", method = RequestMethod.POST)
-//    public String update(@PathVariable("qid") String qid, QuestionBank question) {
-//        service.update(qid, question);
-//        return "redirect:/question";
-//    }
+    @RequestMapping(value = "/save", method = RequestMethod.GET)
+    public String saveView(Model model) {
+        model.addAttribute("points", knowledgePointService.selectAll());
+        return "question/question_save";
+    }
+
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    public String save(Model model, Question question) {
+        questionService.insert(question);
+        return "redirect:/question";
+    }
+
+
+    @RequestMapping(value = "/delete/{qid}", method = RequestMethod.GET)
+    public String delete(@PathVariable("qid") String qid) {
+        questionService.deleteByPrimaryKey(Integer.parseInt(qid));
+        return "redirect:/question";
+    }
+
+    @RequestMapping(value = "/update/{qid}")
+    public String updateView(@PathVariable("qid") String qid, Model model) {
+        Question question = questionService.selectByPrimaryKey(Integer.parseInt(qid));
+        model.addAttribute("points",knowledgePointService.selectAll());
+        model.addAttribute("question", question);
+        return "question/update_question";
+    }
+
+    @RequestMapping(value = "/update/{qid}", method = RequestMethod.POST)
+    public String update(@PathVariable("qid") String qid, Question question) {
+        question.setqId(Integer.parseInt(qid));
+        question.setqCreatetime(new Date());
+        questionService.updateByPrimaryKey(question);
+        return "redirect:/question";
+    }
 //
 //
 //    @RequestMapping(value = "/init")

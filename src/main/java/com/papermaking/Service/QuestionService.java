@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -16,6 +17,23 @@ public class QuestionService {
 
     public List<Question> selectAll() {
         return questionMapper.selectAll();
+    }
+
+    public void insert(Question question) {
+        question.setqCreatetime(new Date());
+        questionMapper.insert(question);
+    }
+
+    public Question selectByPrimaryKey(Integer qid) {
+        return questionMapper.selectByPrimaryKey(qid);
+    }
+
+    public void updateByPrimaryKey(Question question) {
+        questionMapper.updateByPrimaryKey(question);
+    }
+
+    public void deleteByPrimaryKey(int qid) {
+        questionMapper.deleteByPrimaryKey(qid);
     }
 
 //    public void save(QuestionBank questionBank) {
