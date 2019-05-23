@@ -17,7 +17,11 @@
     <resultMap id="KnowledgePointMap" extends="BaseResultMap" type="com.papermaking.pojo.KnowledgePoint">
         <association property="course" fetchType="lazy" column="c_id"
                      select="com.papermaking.mapper.CourseMapper.selectByPrimaryKey"/>
+
+        <collection property="questions" fetchType="lazy" column="k_id"
+                    select="com.papermaking.mapper.QuestionMapper.selectByKid"/>
     </resultMap>
+
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
         <!--
@@ -66,4 +70,11 @@
         select k_id, k_name, c_id, k_number, k_createtime
         from knowledge_point
     </select>
+
+    <select id="selectAllByCid" resultMap="KnowledgePointMap">
+        select k_id, k_name, c_id, k_number, k_createtime
+        from knowledge_point
+        where c_id=#{cId}
+    </select>
+
 </mapper>

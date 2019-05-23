@@ -70,4 +70,10 @@
         select q_id, k_id, q_type, q_difflevel, q_createtime, q_content, q_right_answer
         from question
     </select>
+
+    <select id="selectByKid" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+         select q_id, k_id, q_type, q_difflevel, q_createtime, q_content, q_right_answer
+        from question
+        where k_id = #{kId,jdbcType=INTEGER}
+    </select>
 </mapper>

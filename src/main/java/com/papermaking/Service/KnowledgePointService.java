@@ -50,7 +50,8 @@ public class KnowledgePointService {
 //        questionBankMapper.deleteByKid(kid);
     }
 //
-//    public List<KnowledgePoint> findByCid(String cid) {
-//        return knowledgePointMapper.findByCid(cid);
-//    }
+    public List<KnowledgePoint> selectAllByCid(Integer cId) {
+        return knowledgePointMapper.selectAllByCid(cId);
+    }
+
 }

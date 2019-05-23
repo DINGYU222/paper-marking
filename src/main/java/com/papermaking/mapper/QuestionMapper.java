@@ -48,4 +48,6 @@ public interface QuestionMapper {
      * @mbggenerated
      */
     int updateByPrimaryKey(Question record);
+
+    Question selectByKid(Integer kId);
 }

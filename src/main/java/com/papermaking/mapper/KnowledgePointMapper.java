@@ -48,4 +48,8 @@ public interface KnowledgePointMapper {
      * @mbggenerated
      */
     int updateByPrimaryKey(KnowledgePoint record);
+
+    List<KnowledgePoint> selectAllByCid(Integer cId);
+
+    Integer findCountByTypeAndCid(String type, int parseInt);
 }

@@ -78,7 +78,7 @@
                 </div>
 
                 <div class="am-u-sm-12 am-u-md-8 am-u-md-pull-4">
-                    <form class="am-form am-form-horizontal" action="http://localhost:10088/autoMP/third"
+                    <form class="am-form am-form-horizontal" action="http://localhost:10088/autoMP/save"
                           method="post">
 
                         <div class="am-form-group">
@@ -126,18 +126,115 @@
                         </div>
 
                         <div class="am-form-group">
-                            <label class="am-u-sm-3 am-form-label">选择知识点</label>
+                            <label class="am-u-sm-3 am-form-label">知识点</label>
                             <div class="am-u-sm-9">
                                 <c:forEach var="point" items="${points}">
                                     <input type="checkbox" name="type"
-                                           value="${point.kId}">${point.kNumber}&nbsp;${point.kName}
+                                           value="${point.kId}" checked disabled="disabled">${point.kNumber}&nbsp;${point.kName}
                                 </c:forEach>
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <label class="am-u-sm-3 am-form-label"><font color="#db7093">抽取选择题个数</font></label>
+                            <div class="am-u-sm-9">
+                                <select name="choiceCount">
+                                    <option value="0">抽取选择题的个数 不选默认为0题</option>
+                                    <c:forEach var="num" begin="0" end="${selectNum}" step="1">
+                                        <option value="${num}">${num}</option>
+                                    </c:forEach>
+                                </select>
                             </div>
                         </div>
 
                         <div class="am-form-group">
+                            <label class="am-u-sm-3 am-form-label"><font color="#db7093">填写选择题分值 </font></label>
+                            <div class="am-u-sm-9">
+                                <select name="choiceSocre">
+                                    <option value="5">请选择 选择题 每题的分值 默认每题5分</option>
+                                    <c:forEach var="num" begin="0" end="100" step="1">
+                                        <option value="${num}">${num}</option>
+                                    </c:forEach>
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <div class="am-form-group">
+                            <label class="am-u-sm-3 am-form-label"><font color="#6495ed">抽取填空题个数</font></label>
+                            <div class="am-u-sm-9">
+                                <select name="fillBlankCount">
+                                    <option value="0">抽取填空题的个数 不选默认为0题</option>
+                                    <c:forEach var="num" begin="0" end="${fillBlankNum}" step="1">
+                                        <option value="${num}">${num}</option>
+                                    </c:forEach>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="am-form-group">
+                            <label class="am-u-sm-3 am-form-label"><font color="#6495ed">填写填空题分值 </font></label>
+                            <div class="am-u-sm-9">
+                                <select name="fillBlankSocre">
+                                    <option value="5">请选择 填空题 每题的分值 默认每题5分</option>
+                                    <c:forEach var="num" begin="0" end="100" step="1">
+                                        <option value="${num}">${num}</option>
+                                    </c:forEach>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="am-form-group">
+                            <label class="am-u-sm-3 am-form-label"><font color="#9acd32">抽取简答题个数</font></label>
+                            <div class="am-u-sm-9">
+                                <select name="answerCount">
+                                    <option value="0">抽取简答题的个数 不选默认为0题</option>
+                                    <c:forEach var="num" begin="0" end="${answerNum}" step="1">
+                                        <option value="${num}">${num}</option>
+                                    </c:forEach>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="am-form-group">
+                            <label class="am-u-sm-3 am-form-label"><font color="#9acd32">填写简答题分值 </font></label>
+                            <div class="am-u-sm-9">
+                                <select name="answerSocre">
+                                    <option value="5">请选择 简答题 每题的分值 默认每题5分</option>
+                                    <c:forEach var="num" begin="0" end="100" step="1">
+                                        <option value="${num}">${num}</option>
+                                    </c:forEach>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="am-form-group">
+                            <label class="am-u-sm-3 am-form-label"><font color="purple">抽取判断题个数</font></label>
+                            <div class="am-u-sm-9">
+                                <select name="judgeCount">
+                                    <option value="0">抽取判断题的个数 不选默认为0题</option>
+                                    <c:forEach var="num" begin="0" end="${judgeNum}" step="1">
+                                        <option value="${num}">${num}</option>
+                                    </c:forEach>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="am-form-group">
+                            <label class="am-u-sm-3 am-form-label"><font color="purple">填写判断题分值 </font></label>
+                            <div class="am-u-sm-9">
+                                <select name="judgeSocre">
+                                    <option value="5">请选择 判断题 每题的分值 默认每题5分</option>
+                                    <c:forEach var="num" begin="0" end="100" step="1">
+                                        <option value="${num}">${num}</option>
+                                    </c:forEach>
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <div class="am-form-group">
                             <div class="am-u-sm-9 am-u-sm-push-3">
-                                <button type="submit" class="am-btn am-btn-primary">下一步</button>
+                                <button type="submit" class="am-btn am-btn-primary">自动生成试卷</button>
                             </div>
                         </div>
                     </form>
