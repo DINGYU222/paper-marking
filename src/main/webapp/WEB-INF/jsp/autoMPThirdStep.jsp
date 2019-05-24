@@ -130,7 +130,10 @@
                             <div class="am-u-sm-9">
                                 <c:forEach var="point" items="${points}">
                                     <input type="checkbox" name="type"
-                                           value="${point.kId}" checked disabled="disabled">${point.kNumber}&nbsp;${point.kName}
+                                           value="${point.kId}" checked >${point.kNumber}&nbsp;${point.kName}
+
+                                    <%--<input type="checkbox" name="type" style="display:none"--%>
+                                           <%--value="${point.kId}">${point.kNumber}&nbsp;${point.kName}--%>
                                 </c:forEach>
                             </div>
                         </div>

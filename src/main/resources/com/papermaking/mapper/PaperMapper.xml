@@ -81,4 +81,13 @@
     p_fillBlankSocre, p_answerSocre, p_judgeSocre, p_difflevel
     from paper
   </select>
+
+  <insert id="insertPaperQuestion" >
+    insert into paper_question(p_id,q_id) values
+    <foreach collection="qIds" item="qId" separator=",">
+      (
+        #{pId},#{qId}
+      )
+    </foreach>
+  </insert>
 </mapper>

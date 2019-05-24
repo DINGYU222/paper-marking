@@ -127,8 +127,11 @@ public class AutoMakingPaperController {
         //保存试卷
         Integer pid = paperService.insert(paper);
         //开始自动组卷
-        paperService.createPaper(selectQuestionNum, kIds, pid, cid);
+        boolean b = paperService.createPaper(selectQuestionNum, kIds, pid, cid, Double.valueOf(difflevel));
 
-        return "redirect:/paper";
+        if (b == false)
+            throw new RuntimeException("生成失败，请调整难度系数,可以修改util包下 AutoGeneratingPaper类的wave字段 调整波动");
+        else return "redirect:/paper";
+
     }
 }

@@ -2,6 +2,7 @@ package com.papermaking.mapper;
 
 import com.papermaking.pojo.Paper;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -48,4 +49,6 @@ public interface PaperMapper {
      * @mbggenerated
      */
     int updateByPrimaryKey(Paper record);
+
+    void insertPaperQuestion(@Param("pId") Integer pId,@Param("qIds") List<Integer> qIds);
 }
