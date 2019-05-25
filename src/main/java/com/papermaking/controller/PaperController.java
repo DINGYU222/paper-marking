@@ -21,12 +21,12 @@ public class PaperController {
     @Autowired
     private PaperService paperService;
 
-
     @RequestMapping(method = RequestMethod.GET)
-    public String allTestPaper(Model model) {
+    public String allTestPaper(Model model, @RequestParam(value = "message", required = false) String message) {
         List<Paper> papers = paperService.selectAll();
         model.addAttribute("papers", papers);
         model.addAttribute("total", papers.size());
+        model.addAttribute("message", message);
         return "paper/paper_all";
     }
 
@@ -47,8 +47,8 @@ public class PaperController {
     }
 
     @RequestMapping(value = "/createDoc/{pid}", method = RequestMethod.POST)
-    public String createDoc(@PathVariable("pid") String pid,@RequestParam("path") String path) throws IOException {
-        paperService.createDoc(pid,path);
+    public String createDoc(@PathVariable("pid") String pid, @RequestParam("path") String path) throws IOException {
+        paperService.createDoc(pid, path);
         return "redirect:/paper";
     }
 

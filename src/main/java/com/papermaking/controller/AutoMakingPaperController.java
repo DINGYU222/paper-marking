@@ -4,6 +4,7 @@ import com.papermaking.Service.CourseService;
 import com.papermaking.Service.KnowledgePointService;
 import com.papermaking.Service.PaperService;
 import com.papermaking.Service.QuestionService;
+import com.papermaking.exception.PaperCreateErrorException;
 import com.papermaking.pojo.KnowledgePoint;
 import com.papermaking.pojo.Paper;
 import com.papermaking.pojo.Question;
@@ -130,7 +131,7 @@ public class AutoMakingPaperController {
         boolean b = paperService.createPaper(selectQuestionNum, kIds, pid, cid, Double.valueOf(difflevel));
 
         if (b == false)
-            throw new RuntimeException("生成失败，请调整难度系数,可以修改util包下 AutoGeneratingPaper类的wave字段 调整波动");
+            throw new PaperCreateErrorException("生成失败，请调整难度系数,可以修改util包下 AutoGeneratingPaper类的wave字段 调整波动");
         else return "redirect:/paper";
 
     }

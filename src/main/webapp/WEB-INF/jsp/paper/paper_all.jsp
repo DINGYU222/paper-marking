@@ -27,6 +27,8 @@
 <jsp:include page="../head.jsp"/>
 
 <div class="am-cf admin-main">
+    <c:if test="${message!=null||message!=''}"><script>alert('${message}')</script></c:if>
+
     <!-- sidebar start -->
     <jsp:include page="../left.jsp"/>
     <!-- sidebar end -->
