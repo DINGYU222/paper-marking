@@ -15,10 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 @Transactional
@@ -141,19 +138,41 @@ public class PaperService {
 
     }
 
-//    public void deleteByCid(String cid) {
+    //    public void deleteByCid(String cid) {
 //        mapper.deleteByCid(cid);
 //    }
 //
-//    public void createPaper02(String pid, String[] xuanzelist, String[] tiankonglist, String[] jiandalist, String[] panduanlist) {
-//        if (xuanzelist != null)
-//            extractingMapper.save(pid, Arrays.asList(xuanzelist));
-//        if (tiankonglist != null)
-//            extractingMapper.save(pid, Arrays.asList(tiankonglist));
-//        if (panduanlist != null)
-//            extractingMapper.save(pid, Arrays.asList(panduanlist));
-//        if (jiandalist != null)
-//            extractingMapper.save(pid, Arrays.asList(jiandalist));
-//        System.out.println("111");
-//    }
+    public void createPaper02(Integer pid, String[] xuanzelist, String[] tiankonglist, String[] jiandalist, String[] panduanlist) {
+        if (xuanzelist != null) {
+            List<Integer> list = new ArrayList<>();
+            for (String s : xuanzelist) {
+                list.add(Integer.parseInt(s));
+            }
+            paperMapper.insertPaperQuestion(pid, list);
+        }
+
+        if (tiankonglist != null) {
+            List<Integer> list = new ArrayList<>();
+            for (String s : tiankonglist) {
+                list.add(Integer.parseInt(s));
+            }
+            paperMapper.insertPaperQuestion(pid, list);
+        }
+
+        if (panduanlist != null) {
+            List<Integer> list = new ArrayList<>();
+            for (String s : jiandalist) {
+                list.add(Integer.parseInt(s));
+            }
+            paperMapper.insertPaperQuestion(pid, list);
+        }
+
+        if (jiandalist != null) {
+            List<Integer> list = new ArrayList<>();
+            for (String s : panduanlist) {
+                list.add(Integer.parseInt(s));
+            }
+            paperMapper.insertPaperQuestion(pid, list);
+        }
+    }
 }

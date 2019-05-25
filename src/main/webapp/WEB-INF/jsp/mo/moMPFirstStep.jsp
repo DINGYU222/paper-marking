@@ -84,14 +84,14 @@
                         <div class="am-form-group">
                             <label for="user-phone" class="am-u-sm-3 am-form-label">试卷名称</label>
                             <div class="am-u-sm-9">
-                                <input type="tel" id="y" placeholder="试卷名称" name="name">
+                                <input type="tel" id="y" placeholder="试卷名称" name="pName">
                             </div>
                         </div>
 
                         <div class="am-form-group">
-                            <label for="user-phone" class="am-u-sm-3 am-form-label">难度系数</label>
+                            <label class="am-u-sm-3 am-form-label">难度系数</label>
                             <div class="am-u-sm-9">
-                                <input type="tel"  placeholder="难度系数" name="diffLevel">
+                                <input type="tel"  placeholder="难度系数" name="pDifflevel">
                             </div>
                         </div>
 
@@ -99,9 +99,9 @@
                         <div class="am-form-group">
                             <label class="am-u-sm-3 am-form-label">选择课程</label>
                             <div class="am-u-sm-9">
-                                <select data-am-selected="{btnSize: 'sm'}" name="cid">
+                                <select data-am-selected="{btnSize: 'sm'}" name="cId">
                                     <c:forEach var="course" items="${courses}">
-                                        <option value="${course.cid}">${course.name}</option>
+                                        <option value="${course.cId}">${course.cName}</option>
                                     </c:forEach>
                                 </select>
 
