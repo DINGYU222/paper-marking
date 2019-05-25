@@ -62,11 +62,11 @@
             <form>
                 <c:forEach var="question" items="${questions}">
                     &nbsp;&nbsp;&nbsp;
-                    <div style="font-family:微软雅黑;font-size:19px;font-weight: bold;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${question.content}<font
+                    <div style="font-family:微软雅黑;font-size:19px;font-weight: bold;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${question.qContent}<font
                             color="#FF0000"></font></div>
                     <div>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${question.rightAnswers}&nbsp;&nbsp;正确答案<font
-                            color="#FF0000">(${question.rightAnswers})</font></div>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${question.qRightAnswer}&nbsp;&nbsp;正确答案<font
+                            color="#FF0000">(${question.qRightAnswer})</font></div>
                 </c:forEach>
             </form>
         </div>

@@ -207,9 +207,9 @@
                                 <w:lang w:val="en-US" w:eastAsia="zh-CN"/>
                             </w:rPr>
                             <#list xuanzelist as q>
-                                <w:t>${q.content}</w:t>
+                                <w:t>${q.qContent}</w:t>
                                 <w:br/>
-                                <w:t>${q.rightAnswers}</w:t>
+                                <w:t>${q.qRightAnswer}</w:t>
                                 <w:br/>
                                 <w:br/>
                             </#list>
@@ -275,9 +275,9 @@
                                 <w:lang w:val="en-US" w:eastAsia="zh-CN"/>
                             </w:rPr>
                             <#list tiankonglist as q>
-                                <w:t>${q.content}</w:t>
+                                <w:t>${q.qContent}</w:t>
                                 <w:br/>
-                                <w:t>${q.rightAnswers}</w:t>
+                                <w:t>${q.qRightAnswer}</w:t>
                                 <w:br/>
                                 <w:br/>
                             </#list>
@@ -346,9 +346,9 @@
                                 <w:lang w:val="en-US" w:eastAsia="zh-CN"/>
                             </w:rPr>
                             <#list panduanlist as q>
-                                <w:t>${q.content}</w:t>
+                                <w:t>${q.qContent}</w:t>
                                 <w:br/>
-                                <w:t>${q.rightAnswers}</w:t>
+                                <w:t>${q.qRightAnswer}</w:t>
                                 <w:br/>
                                 <w:br/>
                             </#list>
@@ -418,9 +418,9 @@
                                 <w:lang w:val="en-US" w:eastAsia="zh-CN"/>
                             </w:rPr>
                             <#list jiandalist as q>
-                                <w:t>${q.content}</w:t>
+                                <w:t>${q.qContent}</w:t>
                                 <w:br/>
-                                <w:t>${q.rightAnswers}</w:t>
+                                <w:t>${q.qRightAnswer}</w:t>
                                 <w:br/>
                                 <w:br/>
                             </#list>

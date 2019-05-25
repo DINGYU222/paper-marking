@@ -72,7 +72,7 @@
                             <tr>
                                 <th class="table-title">试卷编号</th>
                                 <th class="table-author am-hide-sm-only">试卷名字</th>
-                                <th class="table-type">课程编号</th>
+                                <th class="table-type">课程名字</th>
                                 <th class="table-type">考试类型</th>
                                 <th class="table-type">考试总分</th>
                                 <th class="table-set">组卷时间</th>
@@ -80,25 +80,25 @@
                             </thead>
                             <tbody>
 
-                            <c:forEach var="testPaper" items="${testPapers}">
+                            <c:forEach var="paper" items="${papers}">
 
                                 <tr>
-                                    <td>${testPaper.pid}</td>
-                                    <td class="am-hide-sm-only">${testPaper.name}</td>
-                                    <td class="am-hide-sm-only">${testPaper.cid}</td>
-                                    <td class="am-hide-sm-only">${testPaper.testTypes}</td>
-                                    <td class="am-hide-sm-only">${testPaper.score}</td>
-                                    <td><fmt:formatDate value="${testPaper.createTime}" type="date"
+                                    <td>${paper.pId}</td>
+                                    <td class="am-hide-sm-only">${paper.pName}</td>
+                                    <td class="am-hide-sm-only">${paper.course.cName}</td>
+                                    <td class="am-hide-sm-only">${paper.pTestTypes}</td>
+                                    <td class="am-hide-sm-only">${paper.pScore}</td>
+                                    <td><fmt:formatDate value="${paper.pCreatetime}" type="date"
                                                         pattern="yyyy-MM-dd"/></td>
 
                                     <td>
                                         <div class="am-btn-toolbar">
                                             <div class="am-btn-group am-btn-group-xs">
-                                                <a href="http://localhost:10088/paper/details/${testPaper.pid}"
+                                                <a href="http://localhost:10088/paper/details/${paper.pId}"
                                                    class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only">
                                                     <span class="am-icon-trash-o"></span>详情
                                                 </a>
-                                                <a href="http://localhost:10088/paper/delete/${testPaper.pid}"
+                                                <a href="http://localhost:10088/paper/delete/${paper.pId}"
                                                    class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only">
                                                     <span class="am-icon-trash-o"></span>删除
                                                 </a>

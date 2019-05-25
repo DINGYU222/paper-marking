@@ -1,6 +1,7 @@
 package com.papermaking.pojo;
 
 import java.util.Date;
+import java.util.List;
 
 public class Paper {
     /**
@@ -100,6 +101,8 @@ public class Paper {
     private Double pDifflevel;
 
     private Course course;
+
+    private List<Question> questions;
 
     public Paper() {
     }
@@ -387,5 +390,13 @@ public class Paper {
 
     public void setCourse(Course course) {
         this.course = course;
+    }
+
+    public List<Question> getQuestions() {
+        return questions;
+    }
+
+    public void setQuestions(List<Question> questions) {
+        this.questions = questions;
     }
 }
