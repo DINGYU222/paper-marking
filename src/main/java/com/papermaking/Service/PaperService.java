@@ -61,7 +61,11 @@ public class PaperService {
     }
 
     public void deleteByPrimaryKey(Integer pId) {
+        Paper paper = paperMapper.selectByPrimaryKey(pId);
+        List<Integer> pIds = new ArrayList<>();
+        pIds.add(paper.getpId());
         paperMapper.deleteByPrimaryKey(pId);
+        paperMapper.deletePaperQuestionByPids(pIds);
     }
 
     public void createDoc(String pid, String path) throws IOException {

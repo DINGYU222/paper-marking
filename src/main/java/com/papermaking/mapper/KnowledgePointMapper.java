@@ -52,4 +52,7 @@ public interface KnowledgePointMapper {
     List<KnowledgePoint> selectAllByCid(Integer cId);
 
     Integer findCountByTypeAndCid(String type, int parseInt);
+
+    void deleteByCid(Integer cId);
+
 }

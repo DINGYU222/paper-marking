@@ -51,4 +51,10 @@ public interface PaperMapper {
     int updateByPrimaryKey(Paper record);
 
     void insertPaperQuestion(@Param("pId") Integer pId,@Param("qIds") List<Integer> qIds);
+
+    void deleteByCid(Integer cid);
+
+    List<Paper> selectAllByCid(Integer cid);
+
+    void deletePaperQuestionByPids(List<Integer> pIds);
 }

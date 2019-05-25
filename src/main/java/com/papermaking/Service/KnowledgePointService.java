@@ -1,6 +1,7 @@
 package com.papermaking.Service;
 
 import com.papermaking.mapper.KnowledgePointMapper;
+import com.papermaking.mapper.QuestionMapper;
 import com.papermaking.pojo.KnowledgePoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,8 +14,8 @@ public class KnowledgePointService {
     @Autowired
     private KnowledgePointMapper knowledgePointMapper;
 
-//    @Autowired
-//    private QuestionBankMapper questionBankMapper;
+    @Autowired
+    private QuestionMapper questionMapper;
 
     public List<KnowledgePoint> selectAll() {
         return knowledgePointMapper.selectAll();
@@ -28,9 +29,12 @@ public class KnowledgePointService {
 //        return knowledgePointMapper.findByIdAndCid(kid,cid);
 //    }
 //
-//    public void deleteByCid(String cid) {
-//        knowledgePointMapper.deleteByCid(cid);
-//    }
+    public void deleteByCid(Integer cid) {
+        List<KnowledgePoint> points = knowledgePointMapper.selectAllByCid(cid);
+        for (KnowledgePoint point : points) {
+            deleteByPrimaryKey(point.getkId());
+        }
+    }
 //
     public void insert(KnowledgePoint point) {
         point.setkCreatetime(new Date());
@@ -46,8 +50,8 @@ public class KnowledgePointService {
 
         //删除知识点
         knowledgePointMapper.deleteByPrimaryKey(kid);
-//        //删除该知识点的题库
-//        questionBankMapper.deleteByKid(kid);
+        //删除该知识点的题目
+        questionMapper.deleteByKid(kid);
     }
 //
     public List<KnowledgePoint> selectAllByCid(Integer cId) {

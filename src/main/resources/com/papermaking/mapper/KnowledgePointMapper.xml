@@ -77,4 +77,8 @@
         where c_id=#{cId}
     </select>
 
+    <delete id="deleteByCid" parameterType="Integer">
+        delete from knowledge_point where c_id=#{cId}
+    </delete>
+
 </mapper>

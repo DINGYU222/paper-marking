@@ -1,5 +1,5 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" pageEncoding="UTF-8" %>
 <!doctype html>
 <html class="no-js">
@@ -27,7 +27,9 @@
 <jsp:include page="../head.jsp"/>
 
 <div class="am-cf admin-main">
-    <c:if test="${message!=null||message!=''}"><script>alert('${message}')</script></c:if>
+    <c:if test="${message!=null||message!=''}">
+        <script>alert('${message}')</script>
+    </c:if>
 
     <!-- sidebar start -->
     <jsp:include page="../left.jsp"/>

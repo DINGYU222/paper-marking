@@ -76,4 +76,8 @@
         from question
         where k_id = #{kId,jdbcType=INTEGER}
     </select>
+
+    <delete id="deleteByKid" parameterType="Integer">
+        delete from question where k_id=#{kid}
+    </delete>
 </mapper>

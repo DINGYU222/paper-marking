@@ -50,4 +50,6 @@ public interface QuestionMapper {
     int updateByPrimaryKey(Question record);
 
     Question selectByKid(Integer kId);
+
+    void deleteByKid(Integer kid);
 }
