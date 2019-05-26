@@ -1,7 +1,6 @@
 package com.papermaking;
 
 import com.papermaking.common.util.SnowflakeIdWorker;
-import com.papermaking.exception.GlobalExceptionHandler;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -20,7 +19,8 @@ public class PaperMakingApplication {
         return new SnowflakeIdWorker(1, 1);
     }
 
-    public GlobalExceptionHandler globalExceptionHandler() {
-        return new GlobalExceptionHandler();
-    }
+//    @Bean
+//    public AutoGeneratingPaper autoGeneratingPaper(){
+//        return new AutoGeneratingPaper();
+//    }
 }

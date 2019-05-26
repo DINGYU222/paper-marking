@@ -29,3 +29,5 @@ mybatis:
   configuration:
     aggressive-lazy-loading: false
     lazy-loading-enabled: true
+
+wave: 0.3

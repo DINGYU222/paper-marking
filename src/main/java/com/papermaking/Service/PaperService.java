@@ -26,6 +26,9 @@ public class PaperService {
     @Autowired
     private KnowledgePointMapper knowledgePointMapper;
 
+    @Autowired
+    private AutoGeneratingPaper autoGeneratingPaper;
+
     public Integer insert(Paper paper) {
         paperMapper.insert(paper);
         return paper.getpId();
@@ -42,7 +45,7 @@ public class PaperService {
             knowledgePoints.add(knowledgePointMapper.selectByPrimaryKey(Integer.parseInt(kid)));
         }
         //获得随机选择的题号
-        List<Integer> qIds = AutoGeneratingPaper.createPaper(selectQuestionNum, knowledgePoints, difflevel);
+        List<Integer> qIds = autoGeneratingPaper.createPaper(selectQuestionNum, knowledgePoints, difflevel);
         if (qIds == null)
             return false;
         else {

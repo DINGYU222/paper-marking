@@ -2,6 +2,8 @@ package com.papermaking.util;
 
 import com.papermaking.pojo.KnowledgePoint;
 import com.papermaking.pojo.Question;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import java.util.*;
 
@@ -10,16 +12,18 @@ import java.util.*;
  *
  * @author 彭燕
  */
+@Component
 public class AutoGeneratingPaper {
 
-    private static double wave = 0.3;
+    @Value("${wave}")
+    private double wave;
 
     /**
      * 自动组卷算法
      *
      * @param selectQuestionNum 是一个int数组 表示前端传过来的题目个数 [0]选择题 【1】填空题 【2】简答题 【3】判断题
      */
-    public static List<Integer> createPaper(int[] selectQuestionNum, List<KnowledgePoint> knowledgePoints, double difflevel) {
+    public List<Integer> createPaper(int[] selectQuestionNum, List<KnowledgePoint> knowledgePoints, double difflevel) {
         if (selectQuestionNum == null || knowledgePoints == null)
             throw new RuntimeException("非法参数");
         //每个知识点所需抽取的试题数量
@@ -59,7 +63,7 @@ public class AutoGeneratingPaper {
         }
     }
 
-    private static double CaluDiffLevel(List<Integer> exam, List<KnowledgePoint> knowledgePoints, int[] selectQuestionNum) {
+    private double CaluDiffLevel(List<Integer> exam, List<KnowledgePoint> knowledgePoints, int[] selectQuestionNum) {
         double diffLevel = 0.0;
         for (Integer qId : exam) {
             for (KnowledgePoint knowledgePoint : knowledgePoints) {
@@ -78,7 +82,7 @@ public class AutoGeneratingPaper {
         return diffLevel / num;
     }
 
-    private static List<Integer> getExam(int[] eachPointNum, int[] selectQuestionNum, Map<Integer, Set<Integer>> xuanzelist, Map<Integer, Set<Integer>> tiankonglist, Map<Integer, Set<Integer>> jiandalist, Map<Integer, Set<Integer>> panduanlist) {
+    private List<Integer> getExam(int[] eachPointNum, int[] selectQuestionNum, Map<Integer, Set<Integer>> xuanzelist, Map<Integer, Set<Integer>> tiankonglist, Map<Integer, Set<Integer>> jiandalist, Map<Integer, Set<Integer>> panduanlist) {
 //        int[] selectQuestionNumCopy = new int[selectQuestionNum.length];
         List<Integer> exam = new ArrayList<>();
 
@@ -194,7 +198,7 @@ public class AutoGeneratingPaper {
         return exam;
     }
 
-    private static void mix(Map<Integer, Set<Integer>> xuanzelist, Map<Integer, Set<Integer>> tiankonglist, Map<Integer, Set<Integer>> jiandalist, Map<Integer, Set<Integer>> panduanlist, List<KnowledgePoint> knowledgePoints) {
+    private void mix(Map<Integer, Set<Integer>> xuanzelist, Map<Integer, Set<Integer>> tiankonglist, Map<Integer, Set<Integer>> jiandalist, Map<Integer, Set<Integer>> panduanlist, List<KnowledgePoint> knowledgePoints) {
         //遍历被选中的知识点下的所有题目
         for (KnowledgePoint knowledgePoint : knowledgePoints) {
 
@@ -228,7 +232,7 @@ public class AutoGeneratingPaper {
         }
     }
 
-    private static void getQuestionIdAndDiffLevel(List<KnowledgePoint> knowledgePoints, Map<Integer, Map<Integer, Double>> xuanzeTemp, Map<Integer, Map<Integer, Double>> tiankongTemp, Map<Integer, Map<Integer, Double>> jiandaTemp, Map<Integer, Map<Integer, Double>> panduanTemp) {
+    private void getQuestionIdAndDiffLevel(List<KnowledgePoint> knowledgePoints, Map<Integer, Map<Integer, Double>> xuanzeTemp, Map<Integer, Map<Integer, Double>> tiankongTemp, Map<Integer, Map<Integer, Double>> jiandaTemp, Map<Integer, Map<Integer, Double>> panduanTemp) {
         //遍历被选中的知识点下的所有题目
         for (KnowledgePoint knowledgePoint : knowledgePoints) {
 
@@ -274,7 +278,7 @@ public class AutoGeneratingPaper {
     //1个知识点 1题 每个知识点选一个
     //2个知识点 1题
     //10个知识点 20题
-    private static void calculateEachPointNumber(int[] eachPointNum, int[] selectQuestionNum, int length) {
+    private void calculateEachPointNumber(int[] eachPointNum, int[] selectQuestionNum, int length) {
         for (int i = 0; i < eachPointNum.length; i++) {
             if (selectQuestionNum[i] != 0) {
                 //如果选择的题目个数 比知识点多 并且可以整除 比如20个题目 10个知识点 那么计算应该为20/10
