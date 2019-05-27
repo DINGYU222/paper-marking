@@ -49,7 +49,7 @@
 
 - **未分页**
 
-  推荐使用Mybatis插件 PageHelper
+  推荐使用Mybatis插件 PageHelper , Mybatis自带分页功能，但是是假分页，是在内存中进行筛选
 
 - **前端优化**
 
